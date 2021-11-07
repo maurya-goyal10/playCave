@@ -51,7 +51,7 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send('welcome', 'welcome to natours family!');
+    await this.send('welcome', 'welcome to PlayCave family!');
   }
 
   async sendPasswordReset() {

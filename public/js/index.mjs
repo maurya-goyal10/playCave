@@ -1,10 +1,12 @@
 /* eslint-disable */
 import { signup, login, logout } from './login.mjs';
+import { forgot } from './forgot.mjs';
 
 // DOM Elements
 const signupForm = document.querySelector('.form--signup');
 const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
+const forgotBtn = document.querySelector('.form--forgot');
 
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
@@ -25,4 +27,12 @@ if (loginForm) {
 
 if (logOutBtn) {
   logOutBtn.addEventListener('click', logout);
+}
+
+if (forgotBtn) {
+  forgotBtn.addEventListener('submit', (e) => {
+    const email = document.getElementById('email').value;
+    e.preventDefault();
+    forgot(email);
+  });
 }

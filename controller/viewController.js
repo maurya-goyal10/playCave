@@ -3,3 +3,8 @@ exports.getLoginForm = (req, res, next) => {
     title: 'LogIn',
   });
 };
+exports.getForgotPassword = (req, res, next) => {
+  res.status(200).render('forgotPassword', {
+    title: 'Forgot Password',
+  });
+};
