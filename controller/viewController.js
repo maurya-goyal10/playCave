@@ -13,3 +13,8 @@ exports.getResetPassword = (req, res, next) => {
     title: 'Reset Password',
   });
 };
+exports.getHome = (req, res, next) => {
+  res.status(200).render('base', {
+    title: 'Home',
+  });
+};

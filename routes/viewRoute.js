@@ -6,7 +6,7 @@ const route = express.Router();
 
 // route.use();
 
-// route.get('/', authController.isLoggedIn, viewController.getOverview);
+route.get('/', authController.isLoggedIn, viewController.getHome);
 // route.get('/tour/:tourSlug', authController.isLoggedIn, viewController.getTour);
 route.get('/login', authController.isLoggedIn, viewController.getLoginForm);
 route.get('/forgotPassword', viewController.getForgotPassword);
