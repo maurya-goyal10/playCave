@@ -1,4 +1,27 @@
 /* LOGIN/SIGNUP */
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 15rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
+}
 #log {
   margin: 0;
   padding: 0;
@@ -100,29 +123,11 @@
 #log input::placeholder {
   font-family: 'Poppins', sans-serif;
 }
-.alert {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  z-index: 9999;
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 400;
-  text-align: center;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 1.6rem 15rem;
-  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+#log a {
+  position: relative;
+  left: 100px;
 }
-.alert--success {
-  background-color: #20bf6b;
-}
-.alert--error {
-  background-color: #eb4d4b;
-}
+
 /**************************************************************************************************/
 /*FORGOT PASSWORD*/
 #forgot {
@@ -172,6 +177,13 @@
   outline: none;
   border-radius: 5px;
 }
+#forgot input:focus {
+  outline: none;
+  border-bottom: 3px solid #55c57a;
+}
+#forgot input:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
 #forgot button {
   width: 60%;
   height: 40px;
@@ -213,7 +225,7 @@
   height: 500px;
   background: red;
   overflow: hidden;
-  background: url('Images/reset-password/3.jpg') no-repeat center / cover;
+  background: url('images/3.jpg') no-repeat center / cover;
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
 }
@@ -243,6 +255,13 @@
   border: none;
   outline: none;
   border-radius: 5px;
+}
+#reset input:focus {
+  outline: none;
+  border-bottom: 3px solid #55c57a;
+}
+#reset input:focus:invalid {
+  border-bottom: 3px solid #ff7730;
 }
 #reset button {
   width: 60%;

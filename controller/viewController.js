@@ -8,3 +8,8 @@ exports.getForgotPassword = (req, res, next) => {
     title: 'Forgot Password',
   });
 };
+exports.getResetPassword = (req, res, next) => {
+  res.status(200).render('resetPassword', {
+    title: 'Reset Password',
+  });
+};
