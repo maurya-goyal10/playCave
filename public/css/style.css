@@ -572,15 +572,23 @@
 #home .footer__copyright {
   justify-self: end;
   color: #302b63;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 #home .nextprev a {
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
-  margin: 10px 295px;
+  margin: 10px 0px;
   color: whitesmoke;
   width: 150px;
+  font-size: 1.5rem;
+}
+
+#home .nextprev a.previous {
+  margin-left: 300px;
+}
+#home .nextprev a.next {
+  margin-left: 400px;
 }
 
 #home .nextprev a:hover {

@@ -52,10 +52,11 @@ html(lang='en')
                     a.btn.btn--green.btn--small.buttond(href='#') Details
 
     .nextprev
-        - if(page > 1 && page < (639698/size))
-            a.previous(href=`/?page=${(page*1)-1}`) &laquo; Previous
-        - if(page < (639698/size))
-            a.next(href=`/?page=${page*1+1}`) Next &raquo;
+        span
+            - if(page > 1 && page < (639698/size))
+                a.previous(href=`/?page=${(page*1)-1}`) &laquo; Previous
+            - if(page < (639698/size))
+                a.next(href=`/?page=${page*1+1}`) Next &raquo;
     .footer
         ul(class='footer__nav')
             li
