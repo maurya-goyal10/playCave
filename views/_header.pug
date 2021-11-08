@@ -1,13 +1,18 @@
-header.header 
-    nav.nav.nav--tours 
-        a.nav__el(href='/') All Tours
-    .header__logo
-        img(src='#' alt='PlayCave logo')
-    nav.nav.nav--user 
+header.header
+    div(class='header__logo')
+        a(href="/") 
+            img(src='/css/images/logo.jpeg' alt='PlayCave logo')
+    nav.navbar.navbar-light.bg-light
+        form#search-form.form-inline
+            input.form-control.mr-sm-2.ip(type='search' placeholder='Explore Games' aria-label='Search')
+            button.btn.btn-outline-success.my-2.my-sm-0.search(type='submit')
+                | Search
+    nav.nav.nav--user
         - if(user)
             a.nav__el.nav__el--logout Logout 
             a.nav__el(href='/me') 
-                img.nav__user-img(src=`#` alt=`photo of ${user.name}`)
+                img.nav__user-img(src=`/img/users/${user.photo}` alt=`photo of ${user.name}`)
                 span= user.name.split(' ')[0]
         -else
-            a.nav__el(href='/login') Log In
+            a(class='nav__el' href='/login') Log In
+            a(class='nav__el nav__el--cta' href='/login') Sign Up

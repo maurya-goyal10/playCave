@@ -53,6 +53,7 @@ app.use(
       scriptSrcElem: ["'self'", 'https:', 'https://*.cloudflare.com'],
       styleSrc: ["'self'", 'https:', 'unsafe-inline'],
       connectSrc: ["'self'", 'data', 'https://*.cloudflare.com'],
+      imgSrc: ["'self'", 'https:', 'unsafe-inline'],
     },
   })
 );
