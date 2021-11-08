@@ -1,13 +1,17 @@
 const axios = require('axios');
 
 exports.getHome = async (req, res, next) => {
+  const page = req.query.page ? req.query.page : 1;
+  const size = req.query.size ? req.query.size : 20;
   const games = await axios({
     method: 'GET',
-    url: `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&page=1&page_size=20`,
+    url: `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&page=${page}&page_size=${size}`,
   });
   res.status(200).render('base', {
     title: 'Home Page',
     games: games.data,
+    page,
+    size,
   });
 };
 
