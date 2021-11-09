@@ -8,6 +8,7 @@ const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const forgotBtn = document.querySelector('.form--forgot');
 const resetBtn = document.querySelector('.form--reset');
+const searchBtn = document.getElementById('search-form');
 
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
@@ -47,5 +48,15 @@ if (resetBtn) {
     console.log(token);
     e.preventDefault();
     reset(token, password, passwordConfirm);
+  });
+}
+
+if (searchBtn) {
+  searchBtn.addEventListener('submit', (e) => {
+    const search = document.getElementById('search').value || '';
+    if (search) {
+      e.preventDefault();
+      location.assign(`/?search=${search}`);
+    }
   });
 }

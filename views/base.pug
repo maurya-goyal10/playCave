@@ -17,46 +17,8 @@ html(lang='en')
     include _header
 
     //body
-    main.main
-      .card-container
-        each game in games.results
-            .card
-                div(class='card__header')
-                    div(class='card__picture')
-                        div(class='card__picture-overlay') &nbsp;
-                        img(class='card__picture-img' src=`${game.background_image}` alt=`image of ${game.slug}`)
-                    //- h3.heading-tertirary
-                    //-     span= game.name
-                div(class='card__details')
-                    h4(class='card__sub-heading')= game.name 
-                    //- p(class='card__text')
-                    //-     | Walk through the streets of Los Santos and uncover the dark
-                    //-     | secrets of the city.
-                    div(class='card__data')
-                        p(class='special') Release Date
-                        p= game.released.toLocaleString('en-US',{month: 'long',year: 'numeric'})
-                    div(class='card__data')
-                        p(class='special') Genre
-                        - str=''
-                        each genre in game.genres
-                            -str += `${genre.name} , `
-                        - str = str.slice(0,-3)
-                        p= `${str}`
+    block content
 
-                div(class='card__footer')
-                    p
-                        span(class='card__footer-value')= game.rating
-                        |
-                        |
-                        span(class='card__footer-text')= `rating (${game.ratings_count})`
-                    a.btn.btn--green.btn--small.buttond(href='#') Details
-
-    .nextprev
-        span
-            - if(page > 1 && page < (639698/size))
-                a.previous(href=`/?page=${(page*1)-1}`) &laquo; Previous
-            - if(page < (639698/size))
-                a.next(href=`/?page=${page*1+1}`) Next &raquo;
     .footer
         ul(class='footer__nav')
             li
