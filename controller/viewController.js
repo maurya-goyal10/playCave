@@ -2,7 +2,7 @@ const axios = require('axios');
 
 exports.getHome = async (req, res, next) => {
   const page = req.query.page ? req.query.page : 1;
-  const size = req.query.size ? req.query.size : 20;
+  const size = req.query.size ? req.query.size : 10;
   const search = req.query.search ? `&search=${req.query.search}` : '';
   const games = await axios({
     method: 'GET',
