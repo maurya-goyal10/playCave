@@ -1,0 +1,37 @@
+extends base
+
+block content
+		main.main2
+			div(class='user-view__content')
+				div(class='user-view__form-container user-data')
+					h2.heading-secondary.ma-bt-md Account settings
+					form.form2.form2-user-data(autocomplete='off')
+						div(class='form2__group')
+							label(class='form2__label' for='name') Name
+							input#name(class='form2__input' type='text' value=`${user.name}` required name='name')
+						div(class='form2__group ma-bt-md')
+							label(class='form2__label' for='email') Email address
+							input#email(class='form2__input' type='email' value=`${user.email}` required name='email')
+						div(class='form2__group form2__photo-upload')
+							img(class='form2__user-photo' src=`/img/users/${user.photo}` alt='User photo')
+							input#photo(class='form2__upload' type='file' name='photo' accept='image/*')
+							label(for='photo') Choose new photo
+						div(class='form2__group right')
+							button.btn2.btn2--small.btn2--green
+								| Save settings
+				.line &nbsp;
+				div(class='user-view__form-container pswd-data')
+					h2.heading-secondary.ma-bt-md Password change
+					form.form2.form2-user-password
+						div(class='form2__group')
+							label(class='form2__label' for='password-current') Current password
+							input#password-current(class='form2__input' type='password' placeholder='••••••••' required minlength='8')
+						div(class='form2__group')
+							label(class='form2__label' for='password') New password
+							input#password(class='form2__input' type='password' placeholder='••••••••' required minlength='8')
+						div(class='form2__group ma-bt-lg')
+							label(class='form2__label' for='password-confirm') Confirm password
+							input#password-confirm(class='form2__input' type='password' placeholder='••••••••' required minlength='8')
+						div(class='form2__group right')
+							button.btn2.btn2--small.btn2--green.btn2--password-update
+								| Save password

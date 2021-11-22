@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { signup, login, logout } from './login.mjs';
+import { signup, login, logout, updateSetting } from './login.mjs';
 import { forgot, reset } from './forgot.mjs';
 
 // DOM Elements
@@ -9,6 +9,8 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const forgotBtn = document.querySelector('.form--forgot');
 const resetBtn = document.querySelector('.form--reset');
 const searchBtn = document.getElementById('search-form');
+const updateForm = document.querySelector('.user-data');
+const updatePassword = document.querySelector('.pswd-data');
 
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
@@ -60,3 +62,36 @@ if (searchBtn) {
     }
   });
 }
+
+if (updateForm) {
+  console.log('hi');
+  updateForm.addEventListener('submit', (e) => {
+    const form = new FormData();
+    form.append('name', document.getElementById('name').value);
+    form.append('email', document.getElementById('email').value);
+    form.append('photo', document.getElementById('photo').files[0]);
+    e.preventDefault();
+    updateSetting(form, 'data');
+    window.setTimeout(() => {
+      location.reload();
+    }, 5000);
+  });
+}
+if (updatePassword)
+  updatePassword.addEventListener('submit', async (e) => {
+    document.querySelector('.btn--password-update').textContent =
+      'Updating... ';
+    const passwordCurrent = document.getElementById('password-current').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+    e.preventDefault();
+    await updateSetting(
+      { passwordCurrent, password, passwordConfirm },
+      'password'
+    );
+    document.querySelector('.btn--password-update').textContent =
+      'SAVE PASSWORD';
+    document.getElementById('password-current').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password-confirm').value = '';
+  });
