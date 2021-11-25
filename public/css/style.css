@@ -849,6 +849,8 @@
 }
 .maintenance {
   height: 80vh;
+  justify-content: center;
+  align-items: center;
 }
 .maintenance h1 {
   color: white;

@@ -7,16 +7,16 @@ module.exports = class Email {
     this.to = user.email;
     this.url = url;
     this.firstName = user.name.split(' ')[0];
-    this.from = `Maurya Goyal <${process.env.EMAIL_FROM}>`;
+    this.from = `PlayCave <${process.env.EMAIL_FROM}>`;
   }
 
   newTransporter() {
     if (process.env.NODE_ENV === 'production') {
       return nodemailer.createTransport({
-        service: 'SendGrid',
+        service: 'Gmail',
         auth: {
-          user: process.env.SENDGRID_USERNAME,
-          pass: process.env.SENDGRID_PASSWORD,
+          user: process.env.GMAIL_EMAIL_USERNAME,
+          pass: process.env.GMAIL_EMAIL_PASSWORD,
         },
       });
     }
@@ -51,7 +51,7 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send('welcome', 'welcome to PlayCave family!');
+    await this.send('Welcome', 'Welcome to PlayCave family!');
   }
 
   async sendPasswordReset() {
