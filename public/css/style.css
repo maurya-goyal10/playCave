@@ -847,3 +847,10 @@
   height: 1px;
   background-color: #302b63;
 }
+.maintenance {
+  height: 80vh;
+}
+.maintenance h1 {
+  color: white;
+  text-align: center;
+}

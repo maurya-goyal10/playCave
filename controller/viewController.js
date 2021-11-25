@@ -32,8 +32,13 @@ exports.getResetPassword = (req, res, next) => {
     title: 'Reset Password',
   });
 };
+exports.getDetails = (req, res, next) => {
+  res.status(200).render('details', {
+    title: 'Details Page',
+  });
+};
 exports.getMe = (req, res, next) => {
   res.status(200).render('getMe', {
-    title: 'get Me',
+    title: 'Update Me',
   });
 };

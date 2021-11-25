@@ -79,7 +79,7 @@ if (updateForm) {
 }
 if (updatePassword)
   updatePassword.addEventListener('submit', async (e) => {
-    document.querySelector('.btn--password-update').textContent =
+    document.querySelector('.btn2--password-update').textContent =
       'Updating... ';
     const passwordCurrent = document.getElementById('password-current').value;
     const password = document.getElementById('password').value;
@@ -89,7 +89,7 @@ if (updatePassword)
       { passwordCurrent, password, passwordConfirm },
       'password'
     );
-    document.querySelector('.btn--password-update').textContent =
+    document.querySelector('.btn2--password-update').textContent =
       'SAVE PASSWORD';
     document.getElementById('password-current').value = '';
     document.getElementById('password').value = '';
