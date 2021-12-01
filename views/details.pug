@@ -1,5 +1,128 @@
 extends base
 
 block content
-    div.maintenance
-        h1= game.name   
+        section.section-header
+            div.header__hero
+                div.header__hero-overlay &nbsp;
+                img(class='header__hero-img' src=`${game.background_image}` alt='')
+            .heading-box
+                h1.heading-primary
+                    span= game.name 
+                div.heading-box__group
+                    div.heading-box__detail
+                        svg.heading-box__icon
+                            i.far.fa-futbol.iconInDetails1
+                        span.heading-box__text
+
+                            ul
+                                each g in game.genres
+                                    li= g.name 
+
+                    div.heading-box__detail
+                        svg.heading-box__icon
+                    .heading-box__detail
+                        svg.heading-box__icon
+                            i.fas.fa-american-sign-language-interpreting.iconInDetails1
+                            if game.esrb_rating.name = 'Mature' || !game.esrb_rating.name
+                                span.heading-box__text 17+ Mature
+                            else 
+                                span.heading-box__text= game.esrb_rating.name 
+
+        section.section-description
+            .overview-box
+
+                div
+                    div.overview-box__group
+                        h2.heading-secondary.ma-bt-lg Quick facts
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Release date
+                            span(class='overview-box__text')= game.released
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Metascore
+                            span(class='overview-box__text metascore')= game.metacritic
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Publisher
+                            a(href='https://www.rockstargames.com/games/V' target='_blank')
+                                span(class='overview-box__text')= game.publishers[0].name
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') rating
+                            span(class='overview-box__text')= `${game.rating} / 5`
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Platforms
+                            span(class='overview-box__text')
+                            each p in game.parent_platforms
+                                    span= p.platform.name 
+                    div.overview-box__group
+                        h2.heading-secondary.ma-bt-lg Reddit Connections
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Official Reddit Link
+                            a(href='https://www.reddit.com/r/GTA/' target='_blank')
+                                span(class='overview-box__text') Grand Theft Auto V
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Reddit Name
+                            span(class='overview-box__text') Grand Theft Auto
+                        div(class='overview-box__detail facts1')
+                            span(class='overview-box__label') Reddit Description
+                            span(class='overview-box__text') Reddit’s Grand Theft Auto community.
+            .description-box
+                h2.heading-secondary.ma-bt-lg Description
+                p(class='description__text')
+                    | Rockstar Games went bigger, since their previous installment of the
+                    | series. You get the complicated and realistic world-building from
+                    | Liberty City of GTA4 in the setting of lively and diverse Los Santos,
+                    | from an old fan favorite GTA San Andreas. 561 different vehicles
+                    | (including every transport you can operate) and the amount is rising
+                    | with every update. Simultaneous storytelling from three unique
+                    | perspectives: Follow Michael, ex-criminal living his life of leisure
+                    | away from the past, Franklin, a kid that seeks the better future, and
+                    | Trevor, the exact past Michael is trying to run away from.
+                    br
+                    | GTA Online will provide a lot of additional challenge even for the
+                    | experienced players, coming fresh from the story mode. Now you will
+                    | have other players around that can help you just as likely as ruin
+                    | your mission. Every GTA mechanic up to date can be experienced by
+                    | players through the unique customizable character, and community
+                    | content paired with the leveling system tends to keep everyone busy
+                    | and engaged.
+
+        section.section-pictures
+            .picture-box
+                img(class='picture-box__img picture-box__img--1' src='https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg' alt='GTAV1')
+            .picture-box
+                img(class='picture-box__img picture-box__img--2' src='https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg' alt='GTAV2')
+            .picture-box
+                img(class='picture-box__img picture-box__img--3' src='https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg' alt='GTAV3')
+
+        section.ratings
+            h3 Ratings
+            .textStuff
+                p Exceptional(943)
+                p 41.74% (5⭐)
+            .container
+                .skills(style='width: 41.74%; background-color: #04aa6d')
+            .textStuff
+                p Recommended(1028)
+                p 45.51% (4⭐)
+            .container
+                .skills(style='width: 45.51%; background-color: #2196f3')
+            .textStuff
+                p Meh(237)
+                p 10.49% (2+⭐)
+            .container
+                .skills(style='width: 10.49%; background-color: orange')
+            .textStuff
+                p Skip(51)
+                p 2.26% (1⭐)
+            .container
+                .skills(style='width: 2.26%; background-color: #f44336')
+
+        section.section-cta
+            .cta
+                div(class='cta__content')
+                    h2.heading-secondary Like this game?
+                    p(class='cta__text')
+                        | If you're logged in, click on the add to favourites button and look
+                        | at your game whenever you want!
+                    button.btn.favs.span-all-rows Login
+                    button.btn.favs.span-all-rows.gold Add to Favourites
+

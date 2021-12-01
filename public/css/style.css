@@ -1,3 +1,7 @@
+:root {
+  --section-rotate: 9vw;
+}
+
 /* LOGIN/SIGNUP */
 .alert {
   position: fixed;
@@ -955,10 +959,12 @@
 #home .heading-primary span,
 #home .heading-tertirary span {
   padding: 1rem 1.5rem;
-  line-height: 2;
+  line-height: 1.5;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   background-color: whitesmoke;
+  padding-bottom: 0 rem;
+  width: 100%;
 }
 #home .heading-primary {
   font-size: 4rem;
@@ -1114,7 +1120,7 @@
   background-color: whitesmoke;
   color: #302b63;
   padding: 20px;
-  min-width: 85rem;
+  /* min-width: 85rem; */
 }
 #home .ratings .textStuff {
   display: flex;

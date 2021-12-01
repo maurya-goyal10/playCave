@@ -39,7 +39,7 @@ exports.getDetails = async (req, res, next) => {
     url: `https://api.rawg.io/api/games/${id}?key=${process.env.RAWG_API_KEY}`,
   });
   res.status(200).render('details', {
-    title: 'Details Page',
+    title: game.slug,
     game: game.data,
   });
 };
