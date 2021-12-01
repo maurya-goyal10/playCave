@@ -32,11 +32,18 @@ exports.getResetPassword = (req, res, next) => {
     title: 'Reset Password',
   });
 };
-exports.getDetails = (req, res, next) => {
+exports.getDetails = async (req, res, next) => {
+  const { id } = req.params;
+  const game = await axios({
+    method: 'GET',
+    url: `https://api.rawg.io/api/games/${id}?key=${process.env.RAWG_API_KEY}`,
+  });
   res.status(200).render('details', {
     title: 'Details Page',
+    game: game.data,
   });
 };
+
 exports.getMe = (req, res, next) => {
   res.status(200).render('getMe', {
     title: 'Update Me',
