@@ -42,7 +42,7 @@ block content
                             span(class='overview-box__text metascore')= game.metacritic
                         div(class='overview-box__detail facts1')
                             span(class='overview-box__label') Publisher
-                            a(href='https://www.rockstargames.com/games/V' target='_blank')
+                            a(href=`${game.website}` target='_blank')
                                 span(class='overview-box__text')= game.publishers[0].name
                         div(class='overview-box__detail facts1')
                             span(class='overview-box__label') rating
@@ -68,7 +68,7 @@ block content
                             span(class='overview-box__text')= game.reddit_description
             .description-box
                 h2.heading-secondary.ma-bt-lg Description
-                p(class='description__text')= game.description_raw
+                p(class='description__text')= `${game.description_raw}`
                     
 
         section.section-pictures
@@ -115,8 +115,11 @@ block content
                     p(class='cta__text')
                         | If you're logged in, click on the add to favourites button and look
                         | at your game whenever you want!
-                    if(user)
-                        button.btn.favs.span-all-rows.gold Add to Favourites
-                    else
+                    if(user && !fav) 
+                        a(href='/login' target='_blank')
+                            button.btn.favs.span-all-rows.gold Add to Favourites 
+                    if(!user)
                         button.btn.favs.span-all-rows Login
+                    if(fav && user)
+                        button.btn.favs.span-all-rows.gold Already added to favourite 
 

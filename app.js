@@ -10,6 +10,7 @@ const compression = require('compression');
 const AppError = require('./utilities/appError');
 const viewRoute = require('./routes/viewRoute');
 const userRoute = require('./routes/userRoute');
+const favRoute = require('./routes/favRoute');
 const errHandler = require('./controller/errorHandler');
 
 const app = express();
@@ -58,9 +59,8 @@ app.use(
   })
 );
 app.use('/', viewRoute);
-// app.use('/api/v1/tours', tourRoute);
 app.use('/api/v1/users', userRoute);
-// app.use('/api/v1/reviews', reviewRoute);
+app.use('/api/v1/fav', favRoute);
 
 app.all('*', (req, res, next) => {
   // const err = new Error(`Cannot find the URL ${req.originalUrl}`);
