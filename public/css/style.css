@@ -1174,7 +1174,7 @@
 #home .cta__content {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 0.7rem;
   grid-auto-flow: column;
   -webkit-box-align: center;

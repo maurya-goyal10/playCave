@@ -38,9 +38,14 @@ exports.getDetails = async (req, res, next) => {
     method: 'GET',
     url: `https://api.rawg.io/api/games/${id}?key=${process.env.RAWG_API_KEY}`,
   });
+  const pic = await axios({
+    method: 'GET',
+    url: `https://api.rawg.io/api/games/${id}/screenshots?key=${process.env.RAWG_API_KEY}`,
+  });
   res.status(200).render('details', {
     title: game.slug,
     game: game.data,
+    pic: pic.data,
   });
 };
 

@@ -50,71 +50,63 @@ block content
                         div(class='overview-box__detail facts1')
                             span(class='overview-box__label') Platforms
                             span(class='overview-box__text')
-                            each p in game.parent_platforms
-                                    span= p.platform.name 
+                                div
+                                    each p in game.parent_platforms
+                                        span= p.platform.name
+                                        span &nbsp;
                     div.overview-box__group
                         h2.heading-secondary.ma-bt-lg Reddit Connections
                         div(class='overview-box__detail facts1')
                             span(class='overview-box__label') Official Reddit Link
-                            a(href='https://www.reddit.com/r/GTA/' target='_blank')
-                                span(class='overview-box__text') Grand Theft Auto V
+                            a(href=`${game.reddit_url}` target='_blank')
+                                span(class='overview-box__text')= game.reddit_name 
                         div(class='overview-box__detail facts1')
                             span(class='overview-box__label') Reddit Name
-                            span(class='overview-box__text') Grand Theft Auto
+                            span(class='overview-box__text')= game.reddit_name
                         div(class='overview-box__detail facts1')
                             span(class='overview-box__label') Reddit Description
-                            span(class='overview-box__text') Reddit’s Grand Theft Auto community.
+                            span(class='overview-box__text')= game.reddit_description
             .description-box
                 h2.heading-secondary.ma-bt-lg Description
-                p(class='description__text')
-                    | Rockstar Games went bigger, since their previous installment of the
-                    | series. You get the complicated and realistic world-building from
-                    | Liberty City of GTA4 in the setting of lively and diverse Los Santos,
-                    | from an old fan favorite GTA San Andreas. 561 different vehicles
-                    | (including every transport you can operate) and the amount is rising
-                    | with every update. Simultaneous storytelling from three unique
-                    | perspectives: Follow Michael, ex-criminal living his life of leisure
-                    | away from the past, Franklin, a kid that seeks the better future, and
-                    | Trevor, the exact past Michael is trying to run away from.
-                    br
-                    | GTA Online will provide a lot of additional challenge even for the
-                    | experienced players, coming fresh from the story mode. Now you will
-                    | have other players around that can help you just as likely as ruin
-                    | your mission. Every GTA mechanic up to date can be experienced by
-                    | players through the unique customizable character, and community
-                    | content paired with the leveling system tends to keep everyone busy
-                    | and engaged.
+                p(class='description__text')= game.description_raw
+                    
 
         section.section-pictures
             .picture-box
-                img(class='picture-box__img picture-box__img--1' src='https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg' alt='GTAV1')
+                img(class='picture-box__img picture-box__img--1' src=`${pic.results[0].image}` alt='game image')
             .picture-box
-                img(class='picture-box__img picture-box__img--2' src='https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg' alt='GTAV2')
+                img(class='picture-box__img picture-box__img--2' src=`${pic.results[1].image}` alt='game image')
             .picture-box
-                img(class='picture-box__img picture-box__img--3' src='https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg' alt='GTAV3')
+                img(class='picture-box__img picture-box__img--3' src=`${pic.results[2].image}` alt='GTAV3')
 
         section.ratings
             h3 Ratings
-            .textStuff
-                p Exceptional(943)
-                p 41.74% (5⭐)
-            .container
-                .skills(style='width: 41.74%; background-color: #04aa6d')
-            .textStuff
-                p Recommended(1028)
-                p 45.51% (4⭐)
-            .container
-                .skills(style='width: 45.51%; background-color: #2196f3')
-            .textStuff
-                p Meh(237)
-                p 10.49% (2+⭐)
-            .container
-                .skills(style='width: 10.49%; background-color: orange')
-            .textStuff
-                p Skip(51)
-                p 2.26% (1⭐)
-            .container
-                .skills(style='width: 2.26%; background-color: #f44336')
+            each r in game.ratings
+                if r.id == 5
+                    .textStuff
+                        p= `Exceptional(${r.count})`
+                        p= `${r.percent} (5⭐)`
+                    .container
+                        .skills(style=`width: ${r.percent}%; background-color: #04aa6d`)
+                if r.id == 4
+                    .textStuff
+                        p= `Recommended(${r.count})`
+                        p= `${r.percent} (4⭐)`
+                    .container
+                        .skills(style=`width: ${r.percent}%; background-color: #2196f3`)
+                if r.id == 3
+                    .textStuff
+                        p= `Meh(${r.count})`
+                        p= `${r.percent} (2+⭐)`
+                    .container
+                        .skills(style=`width: ${r.percent}%; background-color: orange`)
+                if r.id == 1
+                    .textStuff
+                        p= `Skip(${r.count})`
+                        p= `${r.percent} (1⭐)`
+                    .container
+                        .skills(style=`width: ${r.percent}%; background-color: #f44336`)
+
 
         section.section-cta
             .cta
@@ -123,6 +115,8 @@ block content
                     p(class='cta__text')
                         | If you're logged in, click on the add to favourites button and look
                         | at your game whenever you want!
-                    button.btn.favs.span-all-rows Login
-                    button.btn.favs.span-all-rows.gold Add to Favourites
+                    if(user)
+                        button.btn.favs.span-all-rows.gold Add to Favourites
+                    else
+                        button.btn.favs.span-all-rows Login
 
