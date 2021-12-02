@@ -116,10 +116,10 @@ block content
                         | If you're logged in, click on the add to favourites button and look
                         | at your game whenever you want!
                     if(user && !fav) 
-                        a(href='/login' target='_blank')
                             button.btn.favs.span-all-rows.gold Add to Favourites 
                     if(!user)
-                        button.btn.favs.span-all-rows Login
+                        a(href='/login')
+                            button.btn.favs.span-all-rows Login
                     if(fav && user)
                         button.btn.favs.span-all-rows.gold Already added to favourite 
 
