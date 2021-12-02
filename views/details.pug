@@ -85,25 +85,25 @@ block content
                 if r.id == 5
                     .textStuff
                         p= `Exceptional(${r.count})`
-                        p= `${r.percent} (5⭐)`
+                        p= `${r.percent}%(5⭐)`
                     .container
-                        .skills(style=`width: ${r.percent}%; background-color: #04aa6d`)
+                        .skills(style =`width: ${r.percent}%; background-color: #04aa6d`)
                 if r.id == 4
                     .textStuff
                         p= `Recommended(${r.count})`
-                        p= `${r.percent} (4⭐)`
+                        p= `${r.percent}%(4⭐)`
                     .container
                         .skills(style=`width: ${r.percent}%; background-color: #2196f3`)
                 if r.id == 3
                     .textStuff
                         p= `Meh(${r.count})`
-                        p= `${r.percent} (2+⭐)`
+                        p= `${r.percent}%(2+⭐)`
                     .container
                         .skills(style=`width: ${r.percent}%; background-color: orange`)
                 if r.id == 1
                     .textStuff
                         p= `Skip(${r.count})`
-                        p= `${r.percent} (1⭐)`
+                        p= `${r.percent}%(1⭐)`
                     .container
                         .skills(style=`width: ${r.percent}%; background-color: #f44336`)
 
@@ -116,10 +116,9 @@ block content
                         | If you're logged in, click on the add to favourites button and look
                         | at your game whenever you want!
                     if(user && !fav) 
-                            button.btn.favs.span-all-rows.gold Add to Favourites 
+                            button.btn.favs.span-all-rows.gold.add_to_fav Add to Favourites 
                     if(!user)
                         a(href='/login')
                             button.btn.favs.span-all-rows Login
                     if(fav && user)
                         button.btn.favs.span-all-rows.gold Already added to favourite 
-

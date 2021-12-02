@@ -75,3 +75,26 @@ export const updateSetting = async (data, type) => {
     showAlert('error', err.response.data.message);
   }
 };
+
+export const addFav = async () => {
+  try {
+    const queryString = window.location.pathname;
+    const urlParams = queryString.split('/');
+    const gameid = urlParams[2];
+    console.log(gameid);
+
+    const url = `../api/v1/fav/${gameid}`;
+    const res = await axios({
+      method: 'POST',
+      url,
+    });
+    if (res.data.status === 'success') {
+      showAlert('success', 'Added to the favourites list successfully!!');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1000);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};

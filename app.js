@@ -1,6 +1,6 @@
 const path = require('path');
 const morgan = require('morgan');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const express = require('express');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Security HTTP headers
-app.use(helmet());
+// app.use(helmet());
 //development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -40,24 +40,29 @@ app.use(cookieParser());
 //data sanitisation against noSQL query injections
 app.use(mongoSanitize());
 //data sanitisations against XSS
-app.use(xss());
+// app.use(xss());
 
 //test middleware
 app.use(compression());
 //3) Routing
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", 'data:', 'blob:'],
-      fontSrc: ["'self'", 'https:', 'data:'],
-      scriptSrc: ["'self'", 'https://*.cloudflare.com'],
-      scriptSrcElem: ["'self'", 'https:', 'https://*.cloudflare.com'],
-      styleSrc: ["'self'", 'https:', 'unsafe-inline'],
-      connectSrc: ["'self'", 'data', 'https://*.cloudflare.com'],
-      imgSrc: ["'self'", 'https:', 'unsafe-inline'],
-    },
-  })
-);
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: false,
+//   })
+// );
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'", 'data:', 'blob:'],
+//       fontSrc: ["'self'", 'https:', 'data:'],
+//       scriptSrc: ["'self'", 'https://*.cloudflare.com'],
+//       scriptSrcElem: ["'self'", 'https:', 'https://*.cloudflare.com'],
+//       styleSrc: ["'self'", 'https:', 'unsafe-inline'],
+//       connectSrc: ["'self'", 'data', 'https://*.cloudflare.com'],
+//       imgSrc: ["'self'", 'https:', 'unsafe-inline'],
+//     },
+//   })
+// );
 app.use('/', viewRoute);
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/fav', favRoute);

@@ -32,6 +32,7 @@ exports.getResetPassword = (req, res, next) => {
     title: 'Reset Password',
   });
 };
+
 exports.getDetails = async (req, res, next) => {
   const { id } = req.params;
   const game = await axios({
@@ -42,6 +43,7 @@ exports.getDetails = async (req, res, next) => {
     method: 'GET',
     url: `https://api.rawg.io/api/games/${id}/screenshots?key=${process.env.RAWG_API_KEY}`,
   });
+  res.locals.styleNonce = 'fjslkdjflksjdlfkjsdlfjlakjdfl';
   res.status(200).render('details', {
     title: game.slug,
     game: game.data,

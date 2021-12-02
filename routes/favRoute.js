@@ -8,7 +8,7 @@ route.use(authController.protected);
 
 route.route('/').get(favController.getAllFav);
 route
-  .route('/:gid')
+  .route('/:id')
   .get(favController.getFav)
   .post(
     authController.restrictedTo('user'),

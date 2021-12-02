@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { signup, login, logout, updateSetting } from './login.mjs';
+import { signup, login, logout, updateSetting, addFav } from './login.mjs';
 import { forgot, reset } from './forgot.mjs';
 
 // DOM Elements
@@ -11,6 +11,18 @@ const resetBtn = document.querySelector('.form--reset');
 const searchBtn = document.getElementById('search-form');
 const updateForm = document.querySelector('.user-data');
 const updatePassword = document.querySelector('.pswd-data');
+const addToFav = document.querySelector('.add_to_fav');
+
+if (logOutBtn) {
+  logOutBtn.addEventListener('click', logout);
+}
+
+if (addToFav) {
+  addToFav.addEventListener('click', (e) => {
+    console.log('press');
+    addFav();
+  });
+}
 
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
@@ -27,10 +39,6 @@ if (loginForm) {
     e.preventDefault();
     signup(name, email, password, passwordConfirm);
   });
-}
-
-if (logOutBtn) {
-  logOutBtn.addEventListener('click', logout);
 }
 
 if (forgotBtn) {
