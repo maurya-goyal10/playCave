@@ -90,9 +90,7 @@ export const addFav = async () => {
     });
     if (res.data.status === 'success') {
       showAlert('success', 'Added to the favourites list successfully!!');
-      window.setTimeout(() => {
-        location.assign('/');
-      }, 1000);
+      location.reload();
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
