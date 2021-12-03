@@ -81,8 +81,6 @@ export const addFav = async () => {
     const queryString = window.location.pathname;
     const urlParams = queryString.split('/');
     const gameid = urlParams[2];
-    console.log(gameid);
-
     const url = `../api/v1/fav/${gameid}`;
     const res = await axios({
       method: 'POST',

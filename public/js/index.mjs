@@ -19,7 +19,6 @@ if (logOutBtn) {
 
 if (addToFav) {
   addToFav.addEventListener('click', (e) => {
-    console.log('press');
     addFav();
   });
 }
@@ -55,7 +54,6 @@ if (resetBtn) {
     const passwordConfirm = document.getElementById('passConfirm').value;
     let token = window.location.href.split('/');
     token = token[token.length - 1];
-    console.log(token);
     e.preventDefault();
     reset(token, password, passwordConfirm);
   });
@@ -72,7 +70,6 @@ if (searchBtn) {
 }
 
 if (updateForm) {
-  console.log('hi');
   updateForm.addEventListener('submit', (e) => {
     const form = new FormData();
     form.append('name', document.getElementById('name').value);
