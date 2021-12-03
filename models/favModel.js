@@ -10,10 +10,6 @@ const favSchema = mongoose.Schema(
     gid: {
       type: Number,
       required: [true, 'Must be required'],
-      unique: [
-        true,
-        'Cant have the same user making same game favourite multple times',
-      ],
     },
     createdAt: {
       type: Date,
